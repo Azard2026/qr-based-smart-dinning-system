@@ -1,0 +1,21 @@
+{% extends 'food/base.html' %}
+{% load static %}
+{% block title %}payment{% endblock %}
+
+{% block nav %}<h6 class='text-info  '>{{table}}</h6>{% endblock %}
+
+{% block content%}
+<div class="container row justify-content-center">
+<label for="payment"><h2>select the payment type</h2></label>
+<form method="POST">
+    {% csrf_token %}
+    <select name="payment" id="payment" class="rounded-border" required>
+            
+                <option value="COD/UPI">COD/UPI</option>
+                <option value="DEBIT/CREDIT CARD">DEBIT/CREDIT CARD</option>
+    </select>
+    <button type='submit' class='btn btn-success'>submit</button>
+</form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'manager/base.html' %}
+
+{% block title %}manager{% endblock %}
+
+{% load static %}
+
+{% block content %}
+{% load static %}
+
+<div class="container">
+    <div class="row">
+        {% for tab in table %}
+        <div class="col-md-4 mt-3">
+            <form method="POST">
+            {% csrf_token %}
+            <input value={{tab.id}} name='tabid'hidden/>
+            <input value={{tab.tablename}} name='tabname' hidden/>
+            <h2 class='text-success'>{{tab.tablename}}</h2>
+            <button type="submit" class="btn btn-dark ml-5">GET QR</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+        <hr>
+        {% if qrtab %}
+        <div class="row justify-content-center">
+            <div class="col text-center">
+            <h4>{{qrtab}}</h4>
+            
+            <img src='{% static 'manager/qr/code.png' %}' /><br>
+            <a href='{% static 'manager/qr/qr.pdf' %}' class='btn btn-success' download>download </a>
+
+            </div>
+        </div>
+        {% endif %}
+
+        
+    
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,253 @@
+{% extends 'food/base.html' %}
+
+
+{%block title%}Menu{%endblock%}
+
+{% block nav %}<h6 class='text-info  '>{{table}}</h6>{% endblock %}
+
+{%block content%}
+{% load static %}
+    <div class="">
+        <!---chaaat items -->
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h2 class="title ">Chaat</h2><br>
+                        <div class="row">
+                            {% for chaat in chaats %}
+                            
+                                <div class="col-md-4 p-8">
+                                    <img class="picture" src="{{ chaat.cImage.url}}">
+                                    <div class="form-check-inline">
+                                        <h4 class="pt-3" id="chaat{{chaat.id}}">{{chaat.name}}</h4>
+                                    </div>
+                                    <div>
+                                        {% comment %} <input type="radio" name="chaat{{chaat.id}}" value="{{chaat.price}}">Rs. {{chaat.price}} {% endcomment %}
+                                        <h4 class="form-check-inline">Rs.</h4>
+                                        <h4 class="pt-3 form-check-inline" id="price{{chaat.id}}" value="{{chaat.price}}">{{chaat.price}}</h4>
+                                    </div>
+                                    <div class="md-4">
+                                        <button class="btn btn-info mt-3" type="submit" onclick="addChaat('{{chaat.id}}')">Add to cart</button>
+                                
+                                    </div>
+                                    <br>
+                                </div>
+                            
+                            {% endfor %}
+                        </div>
+                </div>
+            </div>
+        </div>
+        <!--drink-->
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h2 class="title"> juices</h2><br>
+                        <div class="row">
+                            {% for drink in drinks %}
+                            
+                                <div class="col-md-4 p-8">
+                                    <img class="picture" src="{{ drink.jImage.url}}">
+                                    <div class="form-check-inline">
+                                        <h4 class="pt-3" id="drink{{drink.id}}">{{drink.name}}</h4>
+                                    </div>
+                                    <div>
+                                        {% comment %} <input type="radio" name="chaat{{chaat.id}}" value="{{chaat.price}}">Rs. {{chaat.price}} {% endcomment %}
+                                        <h4 class="form-check-inline">Rs.</h4>
+                                        <h4 class="pt-3 form-check-inline" id="dprice{{drink.id}}" value="{{drink.price}}">{{drink.price}}</h4>
+                                    </div>
+                                    <div class="md-4">
+                                        <button class=" btn btn-info mt-3" type="submit" onclick="addDrink('{{drink.id}}')">Add to cart</button>
+                                
+                                    </div>
+                                    <br>
+                                </div>
+
+                            
+                            {% endfor %}
+                        </div>
+                        
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!--milkshack-->
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h2 class="title">MilkShakes</h2><br>
+                        <div class="row">
+                            {% for milkshake in milkshacks %}
+                            
+                                <div class="col-md-4 p-8">
+                                    <img class="picture" src="{{ milkshake.mImage.url}}">
+                                    <div class="form-check-inline">
+                                        <h4 class="pt-3" id="milkshake{{milkshake.id}}">{{milkshake.name}}</h4>
+                                    </div>
+                                    <div>
+                                        {% comment %} <input type="radio" name="chaat{{chaat.id}}" value="{{chaat.price}}">Rs. {{chaat.price}} {% endcomment %}
+                                        <h4 class="form-check-inline">Rs.</h4>
+                                        <h4 class="pt-3 form-check-inline" id="mprice{{milkshake.id}}" value="{{milkshake.price}}">{{milkshake.price}}</h4>
+                                    </div>
+                                    <div class="md-4">
+                                        <button class=" btn btn-info mt-3" type="submit" onclick="addMilkshake('{{milkshake.id}}')">Add to cart</button>
+                                
+                                    </div>
+                                    <br>
+                                </div>
+
+                            
+                            {% endfor %}
+                        </div>
+                        
+                </div>
+            </div>
+        </div>
+
+
+         <!--sandwich-->
+         <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h2 class="title">Sandwich</h2><br>
+                        <div class="row">
+                            {% for sandwich in sandwichs %}
+                            
+                                <div class="col-md-4 p-8">
+                                    <img class="picture" src="{{ sandwich.wImage.url}}">
+                                    <div class="form-check-inline">
+                                        <h4 class="pt-3" id="sandwich{{sandwich.id}}">{{sandwich.name}}</h4>
+                                    </div>
+                                    <div>
+                                        {% comment %} <input type="radio" name="chaat{{chaat.id}}" value="{{chaat.price}}">Rs. {{chaat.price}} {% endcomment %}
+                                        <h4 class="form-check-inline">Rs.</h4>
+                                        <h4 class="pt-3 form-check-inline" id="wprice{{sandwich.id}}" value="{{sandwich.price}}">{{sandwich.price}}</h4>
+                                    </div>
+                                    <div class="md-4">
+                                        <button class=" btn btn-info mt-3" type="submit" onclick="addSandwich('{{sandwich.id}}')">Add to cart</button>
+                                
+                                    </div>
+                                    <br>
+                                </div>
+
+                            
+                            {% endfor %}
+                        </div>
+                        
+                </div>
+            </div>
+        </div>
+        <!--sandwich-->
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h2 class="title">Pizza</h2><br>
+                        <div class="row">
+                            {% for pizza in pizzas %}
+                            
+                                <div class="col-md-4 p-8">
+                                    <img class="picture" src="{{ pizza.iImage.url}}">
+                                    <div class="form-check-inline">
+                                        <h4 class="pt-3" id="pizza{{ pizza.id}}">{{ pizza.name}}</h4>
+                                    </div>
+                                    <div>
+                                        {% comment %} <input type="radio" name="chaat{{chaat.id}}" value="{{chaat.price}}">Rs. {{chaat.price}} {% endcomment %}
+                                        <h4 class="form-check-inline">Rs.</h4>
+                                        <h4 class="pt-3 form-check-inline" id="pprice{{ pizza.id}}" value="{{ pizza.price}}">{{ pizza.price}}</h4>
+                                    </div>
+                                    <div class="md-4">
+                                        <button class=" btn btn-info mt-3" type="submit" onclick="addPizza('{{ pizza.id}}')">Add to cart</button>
+                                
+                                    </div>
+                                    <br>
+                                </div>
+
+                            
+                            {% endfor %}
+                        </div>
+                        
+                </div>
+            </div>
+
+
+
+
+             <!--ourspecials-->
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h2 class="title">Ourspecial</h2><br>
+                        <div class="row">
+                            {% for ourspecial in ourspecials %}
+                            
+                                <div class="col-md-4 p-8">
+                                    <img class="picture" src="{{ ourspecial.oImage.url}}">
+                                    <div class="form-check-inline">
+                                        <h4 class="pt-3" id="ourspecial{{ ourspecial.id}}">{{ ourspecial.name}}</h4>
+                                    </div>
+                                    <div>
+                                        {% comment %} <input type="radio" name="chaat{{chaat.id}}" value="{{chaat.price}}">Rs. {{chaat.price}} {% endcomment %}
+                                        <h4 class="form-check-inline">Rs.</h4>
+                                        <h4 class="pt-3 form-check-inline" id="oprice{{ ourspecial.id}}" value="{{ ourspecial.price}}">{{ ourspecial.price}}</h4>
+                                    </div>
+                                    <div class="md-4">
+                                        <button class=" btn btn-info mt-3" type="submit" onclick="addOurspecial('{{ ourspecial.id}}')">Add to cart</button>
+                                
+                                    </div>
+                                    <br>
+                                </div>
+
+                            
+                            {% endfor %}
+                        </div>
+                        
+                </div>
+            </div>
+
+                 <!--ourspecials-->
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h2 class="title">Hotdrinks</h2><br>
+                        <div class="row">
+                            {% for hotdrink in hotdrinks %}
+                            
+                                <div class="col-md-4 p-8">
+                                    <img class="picture" src="{{ hotdrink.hImage.url}}">
+                                    <div class="form-check-inline">
+                                        <h4 class="pt-3" id="hotdrink{{ hotdrink.id}}">{{ hotdrink.name}}</h4>
+                                    </div>
+                                    <div>
+                                        {% comment %} <input type="radio" name="chaat{{chaat.id}}" value="{{chaat.price}}">Rs. {{chaat.price}} {% endcomment %}
+                                        <h4 class="form-check-inline">Rs.</h4>
+                                        <h4 class="pt-3 form-check-inline" id="hprice{{ hotdrink.id}}" value="{{ hotdrink.price}}">{{ hotdrink.price}}</h4>
+                                    </div>
+                                    <div class="md-4">
+                                        <button class=" btn btn-info mt-3" type="submit" onclick="addHotdrink('{{ hotdrink.id}}')">Add to cart</button>
+                                
+                                    </div>
+                                    <br>
+                                </div>
+
+                            
+                            {% endfor %}
+                        </div>
+                        
+                </div>
+            </div>
+
+        </div>
+
+    </div>    
+        <script src="{% static 'food/js/chaat.js' %}"></script>
+        <script src="{% static 'food/js/drink.js'%}"></script>
+        <script src="{% static 'food/js/milkshake.js'%}"></script>
+        <script src="{% static 'food/js/sandwich.js'%}"></script>
+        <script src="{% static 'food/js/pizza.js'%}"></script>
+        <script src="{% static 'food/js/ourspecial.js'%}"></script>
+        <script src="{% static 'food/js/hotdrinks.js'%}"></script>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends  'food/base.html'%}
+
+{% load static %}
+
+{% block title %}orders{% endblock %}
+{% block nav %}<h6 class='text-info  '>{{table}}</h6>{% endblock %}
+
+{% block content %}
+
+<div class="">
+    <div class="container-fluid ">
+        
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <h3>Orders</h3>
+                <div class="row mr-5">
+                    <div class="col-4" id="name">
+                        <h5>Name</h5>
+
+                    </div>
+                    <div class="col-4" id="quantity" class="quantity">
+                        <h5>quantity</h5>
+                    </div>
+                   
+                    <div class="col-2" id="price">
+                        <h5>price</h5>
+                    </div>
+                    <div class="col-2" id="remove">
+                    </div>
+                </div>
+
+                <h3 id="total">Total:</h3>
+
+            </div>
+            
+
+            <div class="col-3">
+                <h5>Message</h5>
+                <textarea class="message" name="message" id="message" cols="30" rows="10"></textarea>
+                <div class="ml-auto m-4">
+                
+                    <button type="submit" class="btn-success" onclick="order()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+    <script src="{% static 'food/js/cart.js'%}"></script>
+{% endblock %}

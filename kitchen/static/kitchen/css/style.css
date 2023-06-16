@@ -1,0 +1,49 @@
+.avatar{
+    
+    width:30%;
+    height:40%;
+
+}
+.head{
+    text-align:center;
+}
+.container{
+    font-size:25px;
+}
+.form{
+    width:60%;
+    
+
+    border-color: black;  
+    border-width: 5px;  
+    border-style: outset;  
+      
+}
+.uname{
+    width: 40%;
+    height: 40%;
+}
+.psw{
+    width: 40%;
+    height: 40%;
+}
+.button{
+    width: fit-content;
+    height: fit-content;
+    background-color: black;
+}
+h1.tabletitle{
+    color: red;
+    font-size: large;
+
+}
+.text-color{
+    color: white;
+    
+}
+.thead{
+    color: plum;
+}
+.tsig{
+    color:lightgreen;
+}

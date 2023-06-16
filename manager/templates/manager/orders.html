@@ -1,0 +1,104 @@
+{% extends 'manager/dashboard.html' %}
+
+{% block title %}Orders{% endblock %}
+
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        {% for tab in table %}
+        <form method="POST">
+           {% csrf_token %}
+           <div class="col">
+           <h1 class="text-warning"> {{tab}}</h1>
+           <input value={{tab}}  name="tab" hidden/>
+           <button type="submit" class="btn btn-info ml-5">Open</button>
+           </div>
+       </form>
+       {% endfor %}
+   </div>
+  
+</div>
+
+<hr>
+<div class="container bg-dark">
+    
+        {% if tableno %}
+        <div class="text-center bg-warning ">
+            <h3>{{tableno}}</h3>
+        </div>
+        {% endif %}
+        <div class="row ">
+            {% for bill in bills %}
+            
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="col-md-4">
+                        
+                        <input value={{tableno}}  name="tabs" hidden/>
+                        <input value={{bill}}  name="bills" hidden/>
+                        <h3 class="text-success">BillNO:{{bill}}</h3>
+                        <button type="submit" class="btn btn-success ml-3">Browser</button>
+                    </div>
+                    
+                </form>
+            
+            {% endfor %}
+        
+        </div>
+</div>
+<div class="container bg-dark ">
+    {% if tabl %}
+    <div class="bg-warning text-center">
+        <h1>{{tabl}}</h1>
+    </div>
+        {% endif %}
+    {% if cbill %}
+        <h3 class="text-color">BillNO:{{cbill}}</h3>
+    
+    <table CELLPADDING=10 class="text-center"><tr>
+        <th><h3 class="thead">ItemName</h3></th>
+        <th><h3 class="thead">Quantity</h3></th>
+        <th><h3 class="thead">Price</h3></th>
+     </tr>{% endif %}
+    {% for od in corder%}
+    
+    <tr>
+        <td>
+        <h3 class="text-color">{{od.itemname}}</h3></td>
+        <td>  <h3 class="text-color">{{od.itemquantity}}</h3></td>
+
+            <td><h3 class="text-color">{{od.itemprice}}</h3></td>
+        </tr>
+    {% endfor %}
+    </table>
+    {% if ctotal.0 and cstatus.0 %}
+    <h3 class="text-color">Total:₹{{ctotal.0}} </h3>
+    <h3 class="text-color">OrderStatus:{{cstatus.0}} </h3>
+    <h3 class="tsig">CookStatus:{{ccook.0}} </h3>
+    <h3 class="tsig">PaymentStatus:{{cpayment.0}} </h3>
+    {% endif %}
+    <br>
+    {% if tabl and cbill%}
+    <form method="POST">
+        {% csrf_token %}
+        <input value={{tabl}} name="cancelordtab" hidden/>
+        <input value={{cbill}}  name="cancelordcbill" hidden/>
+        
+        <button class="btn btn-danger form-check-inline">Cancel Order</button>
+    </form>
+        
+        <form method = "POST">
+            {% csrf_token %}
+            <input value={{tabl}} name="paidtab" hidden/>
+            <input value={{cbill}}  name="paidbill" hidden/>
+            <input value='paid' class="form-check-inline"name="completedpaid" hidden/>
+            <button class='btn btn-success form-check-inline ml auto' type="submit">Paid</button>
+        </form>
+        
+    {% endif %}
+</div>
+
+    
+{% endblock %}

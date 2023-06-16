@@ -1,0 +1,24 @@
+Strawberry Milkshake
+2
+180
+90
+Samosa Chaat
+2
+110
+55
+banana
+2
+80
+40
+apple
+2
+100
+50
+pomegranate
+3
+150
+50
+pineapple
+2
+90
+45

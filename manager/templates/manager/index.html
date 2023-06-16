@@ -1,0 +1,58 @@
+{% extends 'manager/baseindex.html' %}
+
+{% block title %}manager{% endblock %}
+
+{% load static %}
+
+{% block content %}
+{% load static %}
+<div class='bg-danger'>{% if messages %}
+    <ul class="pt-2 text-center">
+        {% for  msg in messages %}
+            <h6>{{ msg }}</h6>
+        {% endfor %}
+    </ul>
+
+{% endif %}
+
+
+
+</div>
+<h2 class="head m-3 mt-5">Manager Login</h2>
+
+<div class="row justify-content-center">
+
+    <form class="form" method="POST">
+        {% csrf_token %}
+    <div class="imgcontainer row justify-content-center">
+        <img src="{% static 'manager/image/chan.png'%}" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container md-3 mt-3 text-center">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" name="username" placeholder="Enter Username" class="uname" required>
+        <br>  
+    </div>  
+    <div class="container md-3 mt-3 text-center">
+
+        <label for="psw"><b>Password</b></label>
+        &nbsp;<input type="password" name="password" placeholder="Enter Password" class="psw" required><br>
+    </div>
+    <div class="container md-3 mt-5 text-center">
+        <button class="btn btn-primary  btn-lg" type="submit">Login</button><br>
+    </div><br>
+    </form>
+</div>
+{% if messages %}
+                        <ul class="pt-2 text-center">
+                            {% for  msg in messages %}
+                                <li>{{ msg }}</li>
+                            {% endfor %}
+                        </ul>
+
+                    {% endif %}
+
+
+
+
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends 'food/base.html' %}
+{% load static %}
+{% block title %}success{% endblock %}
+
+{% block nav %}<h6 class='text-info  '>{{table}}</h6>{% endblock %}
+{% block content%}
+    {% comment %} <div class="parent container d-flex justify-content-center align-items-center h-100">
+        <div class="child mt-4"> <!-- Your code goes inside this div/form --> 
+            <h2 class="mt-2"> we have recived your order! </h2>
+            <h4 class="mt-2"> you have ordered:</h4>
+            <table border='2' cellspaces="0.5" class="text-center  mt-2">
+                
+                <tr> 
+                    <td><h3 class="text-info mt-2">itemnames:</h3><td>
+                {% for itemname in itemnames %}
+                   
+                        <td><h4 class="mt-2">{{itemname}}<h3><td>                    
+                {% endfor %}
+                </tr>
+                <tr> 
+                    <td><h3 class="text-info mt-2">itemprices:</h3><td>
+                {% for itemprice in itemprices %}
+                   
+                        <td><h4 class="mt-2">{{itemprice}}<h3><td>                    
+                {% endfor %}
+                
+                </tr>
+
+            
+
+            </table>
+            <table border='2'><tr>
+                <td><h4 class="text-success mt-2 ">Total₹{{bill}}</h4></td>
+            </tr>
+            </table>
+            
+            
+            <h4> your message was :"{{note}}"</h4>
+            <h4> if you want to modify your order, please call us
+                <buttton class="btn btn-info">help</button>
+            </h4>
+            
+
+        </div>
+    </div> {% endcomment %}
+    {% comment %} <div class="parent container justify-content-center align-items-center ">
+        <div class="child mt-4"> <!-- Your code goes inside this div/form --> {% endcomment %}
+    <div class="container m-4">
+        <div class="row">
+           
+            <div class="col-md-8 ">
+    
+            <h2 class="mt-2  text-center"> we have recived your order! </h2>
+            <h2 class="mt-2 text-center"> BillNo:{{billno}} </h2>
+            
+            <h4 class="mt-2"> you have ordered:</h4>
+            <div class="col-md-8 ">
+            <div class="row">
+       
+            <div class="col-m-5" id="name">
+                <h3>Name</h3>
+                
+                {% for ord in order%}
+                        <td><h5 class="mt-2">{{ord.itemname}}</h5><td>                    
+                {% endfor %}
+            </div>
+            <div class="col-m-5" id="price">
+                <h3>quantity</h3>
+
+                {% for ord in order%}
+                        <td><h5 class="mt-2 pl-5">{{ord.itemquantity}}</h5><td>                    
+                {% endfor %}
+                
+            </div>
+        
+            <div class="col-m-5 pl-3" id="price">
+                <h3>price</h3>
+                {% for ord in order%}
+                        <td><h5 class="mt-2 pl-3">{{ord.itemprice}}</h5><td>                    
+                 {% endfor %}
+                 
+            </div>
+          
+        </div>
+    </div>
+        <h4 class="text-success mt-2 pl-5 ">Total:&nbsp;&nbsp;₹&nbsp;{{total}}</h4>
+        <h4> your message was :"{{note}}"</h4>
+        <h4 class='info-success'> your order status is :{{status.0}}</h4>
+        
+        <h4 class='info-success'> Payment status is :{{payment.0}}</h4>
+        
+        
+            {% comment %} <h4> if you want to modify your order, please call us
+              <
+                <a href="{% url 'food:call' %}"  class="btn btn-info">help</a>
+            </h4> {% endcomment %}
+       
+
+ </div>
+ <form method="POST">
+    {% csrf_token %}
+        <h5> do you want to call the waiter Click here!
+   
+        <input value="{{table}}" id="table" name='table' hidden/>
+        <button type="submit"  class="btn btn-info">CALL</button>
+<form>
+</div> 
+{% if payment.0 == 'notpaid'%}
+{% if status.0 == 'confirm' %}
+<div>
+    <h6>Click here to  select the  a payment Mode</h6>
+    <a class="btn btn-dark" href="{% url 'food:payment' %}">Payment</a>
+
+</div>
+{% endif %}
+{% endif %}
+
+{% endblock %}

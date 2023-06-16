@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %} {% endblock %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% load static %}
+        <link rel="icon" type= "image/png"  href="{% static 'food/image/cooking.png'%}">
+        {% load static %}
+        
+        {% comment %} <link rel="icon" type= "image/png" class="iconres"  href="{% static 'food/image/chan.png'%}"> {% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{% static 'kitchen/css/style.css' %}">
+        
+        
+    </head>
+    <body>
+      {% load static %}
+
+
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <!-- Brand/logo -->
+            <a class="navbar-brand" href="#">
+              <img src="{% static 'food/image/cooking.png'%}" class="logos" alt="logo" style="width:40px; border-radius:50%; ">
+            </a>
+            {% block nav %}{% endblock %}
+            
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynav" aria-controls="mynav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="mynav">
+            <!-- Links -->
+            <ul class="navbar-nav">
+              <li class="nav-item">
+            
+                <a class="nav-link "href="">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'kitchen:dashboard'%}">dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'kitchen:completedorder'%}">CompletedOrders</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav ml-auto ">
+             
+              <li class="nav-item">
+               <a class="nav-link" href="{% url 'kitchen:login' %}"><img  class="ml"src="https://img.icons8.com/fluency/48/null/user-male-circle.png"/><br>logout
+                </a>
+              </li>
+             
+
+               
+                 
+ 
+            </ul>
+
+          </div>
+          </nav>
+          
+          <div>
+            {% block content%}
+            {% endblock %}
+          </div>
+
+      
+
+
+
+
+        
+         <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        {% comment %} <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script> {% endcomment %}
+        <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"
+      ></script>
+        <!-- Popper JS -->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+        
+        <script src="{% static 'food/js/main.js' %}"></script>
+        
+    </body>
+</html>

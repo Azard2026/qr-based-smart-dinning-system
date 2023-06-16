@@ -1,0 +1,82 @@
+{% extends 'kitchen/base.html' %}
+
+{% block title %}kitchen{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row ml-2 mt-3">
+        {% for i in table %}
+        <div class="col-md-4">
+            <form method="POST">
+                {% csrf_token %}
+                <input name="table" value="{{i}}" hidden/>
+                <h2 class="text-success">{{i}}</h2>
+
+                <button type="submit" class="btn btn-dark ml-4">OPEN</button>
+            </form>
+        </div>
+        {% endfor %}
+        </div>
+
+    </div>
+</div>
+<hr>
+<div class="container-fluid">
+    
+    {% if tab %}
+        <diV class="text-center bg-warning">
+            <h2>{{tab}}</h2>
+
+        </div>
+
+    {% endif %}
+    <div class="row ml-2 mt-3">
+    {% for bill in billno %}
+    <div class="col-md-4">
+
+        <form method="POST">
+            {% csrf_token %}
+            <input name="tabbill" value="{{bill}}" hidden/>
+            <input name="ctab" value="{{tab}}" hidden/>
+            <h2 class="text-success">BillNO: {{bill}}</h2>
+
+            <button type="submit" class="btn btn-dark ml-4">Browser</button>
+        </form>
+    </div>
+        
+    {% endfor %}
+    </div>
+
+</div>
+</div>
+{% if gettab and getbill and ordersa and note and cook and status %} 
+<div class="container bg-dark text-info">
+    <div>
+        
+        <h2 class='text-center bg-warning'>{{gettab}}</h2>
+        <h2>BillNo:{{getbill}}</h2>
+        <table CELLPADDING=10>
+            <tr>
+                <th><h3 class="thead">ItemName</h3></th>
+                <th><h3 class="thead">Quantity</h3></th>
+
+            </tr>
+        {% for items in ordersa %}
+            <tr>
+                <td><h3 class="text-color ">{{items.itemname}}<h3></td>
+                <td><h3 class="text-color ml-5">{{items.itemquantity}}</h3></td>
+            </tr>
+
+        {% endfor %}
+        </table>
+        <h3 class='tsig'>Message gived by customer---{{note.0}}</h3>
+        <h3>cooking status---{{cook.0}}</h3>
+        <h3 class='tsig'>orderstatus---{{status.0}}</h3>
+
+
+    </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,22 @@
+
+
+
+
+
+{% extends 'food/base.html' %}
+{% load static %}
+{% block title %}call{% endblock %}
+
+{% block nav %}<h6 class='text-info '>{{table}}</h6>{% endblock %}
+{% block content%}
+
+    <form method="POST">
+        {% csrf_token %}
+            <h1> do you want to call the waiter Click here!
+       
+            <input value="{{table}}" id="table" name='table' hidden/>
+            <button type="submit"  class="btn btn-info">CALL</button>
+   <form>
+    </div>
+{% endblock %}
+    

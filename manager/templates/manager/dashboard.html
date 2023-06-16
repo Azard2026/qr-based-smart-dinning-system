@@ -1,0 +1,82 @@
+{% extends 'manager/base.html' %}
+
+{% block title %}manager dashboard{% endblock %}
+
+{% load static %}
+{% block content %}
+<div class="">
+    {% for i in tablecall %}
+        <form method="GET">
+            {% csrf_token %}
+            <input type="text" name='call' value="{{i.tablecall}}" hidden/>
+            <div class="text-center bg-danger">Customercall:<h6 class="form-check-inline bg-danger">{{i.tablecall}}
+            </h6><button class="btn btn-warning form-check-inline mt-1 ml-auto" type="submit">x</button></div>
+        <form>
+    {% endfor %}
+
+</div>
+<div class="container">
+    <div class="mt-3">
+    
+        <div class="row">
+             {% for tab in table %}
+             <form method="POST">
+                {% csrf_token %}
+                <div class="col">
+                    <h1 class="text-warning">{{tab}}</h1>
+                    <input value={{tab}}  name="tab" hidden/>
+                    <button type="submit" class="btn btn-info ml-3">OPEN</button>
+                </div>
+             </form>
+            {% endfor %}
+ 
+        </div>
+    </div>      
+    
+
+</div>
+<hr class="bg-success">  
+        <div class=" container  mt-3 bg-dark "> 
+        <form method="POST">
+                {% csrf_token %}
+
+                <div class="bg-warning text-center"><h2 class="text-color">{{tableno}} </h2></div>
+                <input name='tableno' type='text' value='{{tableno}}' hidden/>
+                <h2 class="text-color">BillNo:{{billno.0}}<h2>
+                <input name='bill' type='text' value='{{billno.0}}' hidden/>
+                <input name='state' type='text' value='confirm' hidden/>
+             <table CELLPADDING=10 class="text-center"><tr>
+                <th><h3 class="thead">ItemName</h3></th>
+                <th><h3  class="thead">Quantity</h3></th>
+                <th><h3 class="thead">Price</h3></th>
+             </tr>
+
+            {% for orders in orders%}
+            <input name='name' type='text' value='{{orders.itemname}}' hidden/>
+            <input name='quantity' type='text' value='{{orders.itemquantity}}' hidden/>
+            
+            <input name='price' type='text' value='{{orders.itemprice}}' hidden/>
+                <tr>
+                    <td>
+            <h3 class="text-color">{{orders.itemname}}<h3></td>
+            <td><h3 class="text-color">{{orders.itemquantity}}</h3></td> 
+           <td> <h3 class="text-color">{{orders.itemprice}}</h3></td>
+            
+
+            </tr>
+
+            {% endfor %}
+        </table>    
+            <h2 class="text-success">Total:  ₹{{total.0}}<h2>
+                <h3 class="text-color">OrderStatus:{{status.0}}<h3>
+                    <h3 class="tsig">CookingStatus:{{cook.0}}<h3>
+                <h3 class="text-warning">Note:{{note.0}}</h3>                                                                                           
+        
+                    <button class="btn btn-success" type="submit">Get Orders</button>
+                </form>
+        </div>
+
+
+</div>
+
+{% endblock %}

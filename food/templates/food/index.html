@@ -1,0 +1,23 @@
+{% extends 'food/base.html' %}
+
+
+
+{% block title %} Home {% endblock %}
+
+
+{% block nav %}<h6 class='text-info  '>{{table}}</h6>{% endblock %}
+{% block content %}
+{% load static %}
+
+    <div class="home"></div>
+    <div class="bg-text">
+        {% comment %} <h1>Welcome To Chan Foods</h1> {% endcomment %}
+        <img class="brand mt-2" src=" {% static 'food/image/W.png'%}"/> 
+        <br>
+        
+            <a href="{% url 'food:menu' %}" class='btn btn-success'>Browse Menu</a>
+        
+        {% comment %} <a href="{% url 'food:menu' %}"><button class="indexbtn mt-2 btn-outline-success"> Click Here To Browse Menu !!</button></a> {% endcomment %}
+    </div>
+
+{% endblock %}
